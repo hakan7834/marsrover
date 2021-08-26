@@ -91,7 +91,7 @@ class Rover extends \App\Controllers\BaseController
      *                  @OA\Property(property="name", type="string"),
      *                  @OA\Property(property="x", type="integer"),
      *                  @OA\Property(property="y", type="integer"),
-     *                  @OA\Property(property="heading", type="string", description="Posible variables: <br> <b>N :</b> North <br><b>E :</b> East <br><b>S :</b> South <br><b>W :</b> West", enum="N,E,S,W"),
+     *                  @OA\Property(property="heading", type="string", description="Posible variables: <br> <b>N :</b> North <br><b>E :</b> East <br><b>S :</b> South <br><b>W :</b> West"),
      *                  required={"plateauId","name", "x", "y", "heading"}
      *             )
      *         )
