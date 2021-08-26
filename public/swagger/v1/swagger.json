@@ -1,0 +1,271 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/v1/plateau": {
+            "get": {
+                "tags": [
+                    "Plateau"
+                ],
+                "summary": "list of Plateaus",
+                "description": "Returns list of Plateaus",
+                "operationId": "eb21eec9a7dc37c1727e573506ddb9a0",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/v1/plateau/{plateauId}": {
+            "get": {
+                "tags": [
+                    "Plateau"
+                ],
+                "summary": "Get specific Plateau",
+                "description": "Get Plateau by Id",
+                "operationId": "051319b9a7db5c476215181ab0cf0a17",
+                "parameters": [
+                    {
+                        "name": "plateauId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not found Plateau"
+                    }
+                }
+            }
+        },
+        "/v1/plateau/create": {
+            "post": {
+                "tags": [
+                    "Plateau"
+                ],
+                "summary": "create of Plateau",
+                "description": "Create Plateau by <br/> <b>name</b> : name of Plateau <br/><b>x</b> : right corrdinate of Plateau <br/><b>y</b> : upper coordinate of Plateau",
+                "operationId": "c738d673508725a4534e0365ef9dc030",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "x",
+                                    "y"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "x": {
+                                        "type": "integer"
+                                    },
+                                    "y": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success"
+                    },
+                    "501": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
+        },
+        "/v1/plateau/{plateauId}/rover": {
+            "get": {
+                "tags": [
+                    "Rover"
+                ],
+                "summary": "list rovers of Plateau",
+                "description": "Returns list rovers of Plateaus",
+                "operationId": "43f677a8121f80a0501a01def31ed2b5",
+                "parameters": [
+                    {
+                        "name": "plateauId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found Plateau"
+                    }
+                }
+            }
+        },
+        "/v1/plateau/{plateauId}/rover/{roverId}": {
+            "get": {
+                "tags": [
+                    "Rover"
+                ],
+                "summary": "get specific rover of Plateau",
+                "description": "Returns get specific rover of Plateau by Id",
+                "operationId": "e9f8dc688722a79487180737f141d45d",
+                "parameters": [
+                    {
+                        "name": "plateauId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "roverId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found Plateau"
+                    }
+                }
+            }
+        },
+        "/v1/plateau/{plateauId}/rover/create": {
+            "post": {
+                "tags": [
+                    "Rover"
+                ],
+                "summary": "create Rover of Plateau",
+                "description": "Create Rover of Plateau by <br/> <b>plateauId</b> : ID of Plateau <br/> <b>name</b> : name of Rover <br/><b>x</b> : right corrdinate of Rover <br/><b>y</b> : upper coordinate of Rover <br/><b>heading</b> : initial heading direction posible values : <b>N :</b> North, <b>E :</b> East, <b>S :</b> South, <b>W :</b> West",
+                "operationId": "9395c8612d7c23a3d2847697e7d5c549",
+                "parameters": [
+                    {
+                        "name": "plateauId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "plateauId",
+                                    "name",
+                                    "x",
+                                    "y",
+                                    "heading"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "x": {
+                                        "type": "integer"
+                                    },
+                                    "y": {
+                                        "type": "integer"
+                                    },
+                                    "heading": {
+                                        "description": "Posible variables: <br> <b>N :</b> North <br><b>E :</b> East <br><b>S :</b> South <br><b>W :</b> West",
+                                        "type": "string",
+                                        "enum": "N,E,S,W"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success"
+                    },
+                    "501": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
+        },
+        "/v1/plateau/{plateauId}/rover/{roverId}/command": {
+            "post": {
+                "tags": [
+                    "Rover"
+                ],
+                "summary": "send commands to Rover",
+                "description": "send commands to Rover",
+                "operationId": "2a5fc531458a0313245adcd63c01abc9",
+                "parameters": [
+                    {
+                        "name": "plateauId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "roverId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "commands"
+                                ],
+                                "properties": {
+                                    "commands": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found Plateau"
+                    },
+                    "501": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
+        }
+    }
+}

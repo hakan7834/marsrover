@@ -1,0 +1,21 @@
+version: "3.7"
+
+networks:
+  rovernet:
+    name: rovernet
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.23.0.0/16
+
+services:
+  marsrover:
+    build: .
+    container_name: marsrover
+    networks:
+      rovernet:
+        ipv4_address: 172.23.1.1
+    ports:
+      - 80:80
+    tty: true
+    restart: always
